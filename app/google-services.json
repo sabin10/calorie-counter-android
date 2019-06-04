@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "129466691487",
+    "firebase_url": "https://caloriecounter-f17fb.firebaseio.com",
+    "project_id": "caloriecounter-f17fb",
+    "storage_bucket": "caloriecounter-f17fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129466691487:android:4c5390e28ca81b74",
+        "android_client_info": {
+          "package_name": "com.sabinhantu.caloriecounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129466691487-bacuolr1go67ggi0q6k6s4etjf1ua47k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sabinhantu.caloriecounter",
+            "certificate_hash": "6201edb7b8076f98d1d790d0acc09ce22627f9c0"
+          }
+        },
+        {
+          "client_id": "129466691487-6hvbsben3h1pogsir2i66dvsa9b9512u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3cn8tbInvGfOU12uy2g_ZmJdnojnfsgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129466691487-6hvbsben3h1pogsir2i66dvsa9b9512u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
