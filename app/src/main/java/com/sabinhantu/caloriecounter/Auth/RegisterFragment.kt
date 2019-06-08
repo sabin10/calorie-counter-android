@@ -63,7 +63,7 @@ class RegisterFragment : Fragment() {
 
     fun intentToMainActivity() {
         val intent = Intent(activity, MainActivity::class.java)
-        // remove initial MainActivity from backstack
+        // remove initial MainActivity from backstackm
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         activity!!.startActivity(intent)
     }

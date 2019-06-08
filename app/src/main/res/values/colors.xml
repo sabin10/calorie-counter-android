@@ -2,5 +2,14 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#000000</color>
+    <color name="colorBlueMacro">#00349E</color>
+    <color name="colorGreenMacro">#218000</color>
+    <color name="colorOrangeMacro">#FF7700</color>
+    <color name="colorGreyMacro">#CECECE</color>
+    <color name="colorGreyText">#9D9D9D</color>
+    <color name="colorFbButton">#4267B2</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <!--#EEEEEE GREY actionbar-->
 </resources>
