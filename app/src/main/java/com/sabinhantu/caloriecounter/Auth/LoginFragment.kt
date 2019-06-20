@@ -34,6 +34,8 @@ class LoginFragment : Fragment() {
         loginButton = view.findViewById(R.id.login_button_view)
         toRegisterText = view.findViewById(R.id.to_register_text)
 
+
+
         mAuth = FirebaseAuth.getInstance()
 
         loginButton.setOnClickListener {
@@ -69,6 +71,4 @@ class LoginFragment : Fragment() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         activity!!.startActivity(intent)
     }
-
-
 }

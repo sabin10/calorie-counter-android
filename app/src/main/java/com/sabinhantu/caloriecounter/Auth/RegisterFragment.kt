@@ -68,6 +68,4 @@ class RegisterFragment : Fragment() {
         activity!!.startActivity(intent)
     }
 
-
-
 }

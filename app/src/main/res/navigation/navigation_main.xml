@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_main"
+            app:startDestination="@id/dayOverviewFragment">
+
+    <fragment android:id="@+id/dayOverviewFragment"
+              android:name="com.sabinhantu.caloriecounter.DayOverview.DayOverviewFragment"
+              android:label="fragment_day_overview" tools:layout="@layout/fragment_day_overview">
+        <action android:id="@+id/action_dayOverviewFragment_to_searchFragment" app:destination="@id/searchFragment"/>
+    </fragment>
+    <fragment android:id="@+id/searchFragment" android:name="com.sabinhantu.caloriecounter.Search.SearchFragment"
+              android:label="fragment_search" tools:layout="@layout/fragment_search">
+        <action android:id="@+id/action_searchFragment_to_addFoodFragment" app:destination="@id/addFoodFragment"/>
+    </fragment>
+    <fragment android:id="@+id/addFoodFragment" android:name="com.sabinhantu.caloriecounter.AddFood.AddFoodFragment"
+              android:label="fragment_add_food" tools:layout="@layout/fragment_add_food"/>
+</navigation>

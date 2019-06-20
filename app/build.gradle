@@ -39,13 +39,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     // Firebase Auth
-    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+
     // Timber Logger
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
     //  Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+
     // Lifecycles
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    // Facebook sign in
+//    implementation 'com.facebook.android:facebook-login:5.0.1'
+
 }

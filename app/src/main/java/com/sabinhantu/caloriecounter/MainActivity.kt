@@ -2,8 +2,9 @@ package com.sabinhantu.caloriecounter
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.FirebaseAuth
 import com.sabinhantu.caloriecounter.Auth.AuthActivity
 
@@ -11,20 +12,15 @@ import com.sabinhantu.caloriecounter.Auth.AuthActivity
 class MainActivity : AppCompatActivity() {
 
     private var mAuth: FirebaseAuth? = null
-    private lateinit var logoutButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         mAuth = FirebaseAuth.getInstance()
-        logoutButton = findViewById(R.id.log_out_button)
 
-
-        logoutButton.setOnClickListener {
-            mAuth!!.signOut()
-            intentToAuthActivity()
-        }
+        val navController = this.findNavController(R.id.nav_main_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onStart() {
@@ -36,8 +32,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_main_fragment)
+        return navController.navigateUp()
+    }
+
     fun intentToAuthActivity() {
         val intent = Intent(this, AuthActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 }
