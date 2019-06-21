@@ -55,4 +55,8 @@ dependencies {
     // Facebook sign in
 //    implementation 'com.facebook.android:facebook-login:5.0.1'
 
+    // notice that the compiler version must be the same than our gradle version
+    // Data Binding
+    kapt 'com.android.databinding:compiler:2.3.1'
+
 }
