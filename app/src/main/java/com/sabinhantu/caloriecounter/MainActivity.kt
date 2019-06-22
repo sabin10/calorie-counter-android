@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.FirebaseAuth
-import com.sabinhantu.caloriecounter.Auth.AuthActivity
+import com.sabinhantu.caloriecounter.auth.AuthActivity
 import com.sabinhantu.caloriecounter.databinding.ActivityMainBinding
 
 
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = this.findNavController(R.id.nav_main_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+
     }
 
     override fun onStart() {

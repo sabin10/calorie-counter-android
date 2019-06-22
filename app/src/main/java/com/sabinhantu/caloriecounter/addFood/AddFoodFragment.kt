@@ -1,4 +1,4 @@
-package com.sabinhantu.caloriecounter.AddFood
+package com.sabinhantu.caloriecounter.addFood
 
 import android.os.Bundle
 import android.view.LayoutInflater

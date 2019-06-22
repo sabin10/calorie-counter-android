@@ -4,10 +4,10 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_auth"
             app:startDestination="@id/loginFragment">
 
-    <fragment android:id="@+id/loginFragment" android:name="com.sabinhantu.caloriecounter.Auth.LoginFragment"
+    <fragment android:id="@+id/loginFragment" android:name="com.sabinhantu.caloriecounter.auth.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login">
         <action android:id="@+id/action_loginFragment_to_registerFragment" app:destination="@id/registerFragment"/>
     </fragment>
-    <fragment android:id="@+id/registerFragment" android:name="com.sabinhantu.caloriecounter.Auth.RegisterFragment"
+    <fragment android:id="@+id/registerFragment" android:name="com.sabinhantu.caloriecounter.auth.RegisterFragment"
               android:label="fragment_register" tools:layout="@layout/fragment_register"/>
 </navigation>

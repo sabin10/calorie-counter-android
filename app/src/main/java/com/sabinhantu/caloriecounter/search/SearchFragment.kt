@@ -1,4 +1,4 @@
-package com.sabinhantu.caloriecounter.Search
+package com.sabinhantu.caloriecounter.search
 
 
 import android.os.Bundle

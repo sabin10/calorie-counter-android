@@ -1,4 +1,4 @@
-package com.sabinhantu.caloriecounter.Auth
+package com.sabinhantu.caloriecounter.auth
 
 
 import android.content.Intent
