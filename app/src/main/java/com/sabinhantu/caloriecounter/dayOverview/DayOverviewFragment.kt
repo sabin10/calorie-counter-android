@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.databinding.FragmentDayOverviewBinding
 
@@ -23,9 +24,9 @@ class DayOverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentDayOverviewBinding>(inflater, R.layout.fragment_day_overview, container, false)
 
-//        binding.btnOverviewToSearch.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(R.id.action_dayOverviewFragment_to_searchFragment)
-//        )
+        binding.btnOverviewToSearch.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_dayOverviewFragment_to_searchFragment)
+        )
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)

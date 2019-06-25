@@ -12,4 +12,5 @@
 
     <string name="facebook_app_id">392729354670177</string>
     <string name="fb_login_protocol_scheme">fb392729354670177</string>
+    <string name="Search">Search</string>
 </resources>

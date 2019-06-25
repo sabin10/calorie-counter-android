@@ -3,27 +3,68 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".search.SearchFragment">
+        tools:context=".search.SearchFragment" android:id="@+id/layout2">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="viewModel"
+                  type="com.sabinhantu.caloriecounter.search.SearchViewModel"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         <!-- TODO: Update blank fragment layout -->
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search fragment" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView3"/>
         <Button
                 android:text="TO ADD FOOD FRAGMENT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_search_to_add_food" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+                android:id="@+id/btn_search_to_add_food" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/search_edittext" android:layout_marginTop="32dp"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:background="@drawable/search_input_style"
+                android:padding="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="@string/Search"
+                android:text="@={viewModel.word}"/>
+        <Button
+                android:text="@string/Search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_search" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/search_edittext" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                style="@style/style_button_black"
+                android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_text_result"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.response}"
+                app:layout_constraintTop_toBottomOf="@+id/btn_search"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_search_to_add_food"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
