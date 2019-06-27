@@ -1,12 +1,11 @@
 package com.sabinhantu.caloriecounter.network.model
 
 data class Food (
-    val foodId: String,
-    val label: String,
+    val foodId: String = "",
+    val label: String = "",
     val nutrients: Nutrients,
-    val category: String,
-    val categoryLabel: String,
-    val image: String
+    val category: String = "",
+    val categoryLabel: String = ""
 )
 
 
