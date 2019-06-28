@@ -51,20 +51,15 @@
                 android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"
                 app:layout_constraintTop_toTopOf="@+id/search_edittext"
                 app:layout_constraintBottom_toBottomOf="@+id/search_edittext"/>
-
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:id="@+id/search_text_result"
-                android:layout_marginTop="8dp"
-                android:text="@{viewModel.response}"
-                app:layout_constraintTop_toBottomOf="@+id/btn_search"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/btn_search_to_add_food"
+                app:layout_constraintTop_toBottomOf="@+id/search_edittext" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
+                app:layout_constraintBottom_toTopOf="@+id/btn_search_to_add_food"
+                android:id="@+id/search_recyclerview"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
