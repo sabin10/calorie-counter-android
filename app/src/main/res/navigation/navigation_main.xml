@@ -18,5 +18,10 @@
                 app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment android:id="@+id/addFoodFragment" android:name="com.sabinhantu.caloriecounter.addFood.AddFoodFragment"
-              android:label="fragment_add_food" tools:layout="@layout/fragment_add_food"/>
+              android:label="fragment_add_food" tools:layout="@layout/fragment_add_food">
+        <argument
+            android:name="selectedFood"
+            app:argType="com.sabinhantu.caloriecounter.network.model.Food"
+        />
+    </fragment>
 </navigation>

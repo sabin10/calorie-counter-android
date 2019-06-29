@@ -8,7 +8,7 @@ import com.sabinhantu.caloriecounter.convertFoodNameToShortString
 import com.sabinhantu.caloriecounter.databinding.ListItemSearchBinding
 import com.sabinhantu.caloriecounter.network.model.Food
 
-class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
+class SearchItemAdapter(val onClickListener: OnClickListener) : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
     var data = listOf<Food>()
         set(value) {
@@ -25,6 +25,9 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: SearchItemAdapter.ViewHolder, position: Int) {
         val item = data[position]
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
@@ -49,5 +52,16 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
         }
 
     }
+
+    /**
+     * Custom listener that handles clicks on [RecyclerView] items.  Passes the [Food]
+     * associated with the current item to the [onClick] function.
+     * It will be called in onBindViewHolder
+     * @param clickListener lambda that will be called with the current [Food]
+     */
+    class OnClickListener(val clickListener: (food: Food) -> Unit) {
+        fun onClick(food: Food) = clickListener(food)
+    }
+
 
 }

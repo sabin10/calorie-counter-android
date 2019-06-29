@@ -1,12 +1,16 @@
 package com.sabinhantu.caloriecounter.network.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Food (
     val foodId: String = "",
     val label: String = "",
     val nutrients: Nutrients,
     val category: String = "",
     val categoryLabel: String = ""
-)
+) : Parcelable
 
 
 

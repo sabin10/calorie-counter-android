@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable name="viewModel"
+                  type="com.sabinhantu.caloriecounter.addFood.AddFoodViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +14,7 @@
             android:layout_height="match_parent"
             tools:context=".addFood.AddFoodFragment">
         <TextView
-                android:text="@string/foodname"
+                android:text="@{viewModel.selectedFood.label}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addfood_name"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
