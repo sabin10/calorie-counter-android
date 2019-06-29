@@ -1,13 +1,11 @@
 package com.sabinhantu.caloriecounter.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.convertFoodKcalDoubletoString
 import com.sabinhantu.caloriecounter.convertFoodNameToShortString
+import com.sabinhantu.caloriecounter.databinding.ListItemSearchBinding
 import com.sabinhantu.caloriecounter.network.model.Food
 
 class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
@@ -30,26 +28,24 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
         holder.bind(item)
     }
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val foodName: TextView = itemView.findViewById(R.id.search_item_name)
-        val foodKcal: TextView = itemView.findViewById(R.id.search_item_kcal)
+    class ViewHolder private constructor(val binding: ListItemSearchBinding) : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater
-                    .inflate(R.layout.list_item_search, parent, false)
+//                val view = layoutInflater
+//                    .inflate(R.layout.list_item_search, parent, false)
+                val binding = ListItemSearchBinding.inflate(layoutInflater, parent, false)
 
-                return ViewHolder(view)
+                return ViewHolder(binding)
             }
         }
 
         fun bind(item: Food) {
-//            val res = itemView.context.resources
+//            val res = binding.context.resources
 
-            foodName.text = convertFoodNameToShortString(item.label)
-            foodKcal.text = convertFoodKcalDoubletoString(item.nutrients.kcal)
+            binding.searchItemName.text = convertFoodNameToShortString(item.label)
+            binding.searchItemKcal.text = convertFoodKcalDoubletoString(item.nutrients.kcal)
         }
 
     }
