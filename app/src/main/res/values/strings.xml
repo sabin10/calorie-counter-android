@@ -15,4 +15,5 @@
     <string name="Search">Search</string>
     <string name="listitem">List Item</string>
     <string name="kcal">100 kcal</string>
+    <string name="foodname">Food Name</string>
 </resources>
