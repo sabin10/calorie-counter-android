@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.databinding.FragmentSearchBinding
 
@@ -24,9 +23,9 @@ class SearchFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentSearchBinding>(inflater, R.layout.fragment_search, container, false)
 
-        binding.btnSearchToAddFood.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_searchFragment_to_addFoodFragment)
-        )
+//        binding.btnSearchToAddFood.setOnClickListener(
+//            Navigation.createNavigateOnClickListener(R.id.action_searchFragment_to_addFoodFragment)
+//        )
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)

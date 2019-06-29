@@ -20,11 +20,7 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchItemAdapter.ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater
-            .inflate(R.layout.list_item_search, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun getItemCount() = data.size
@@ -34,17 +30,28 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
         holder.bind(item)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val foodName: TextView = itemView.findViewById(R.id.search_item_name)
         val foodKcal: TextView = itemView.findViewById(R.id.search_item_kcal)
 
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater
+                    .inflate(R.layout.list_item_search, parent, false)
+
+                return ViewHolder(view)
+            }
+        }
+
         fun bind(item: Food) {
-            val res = itemView.context.resources
+//            val res = itemView.context.resources
 
             foodName.text = convertFoodNameToShortString(item.label)
             foodKcal.text = convertFoodKcalDoubletoString(item.nutrients.kcal)
         }
 
     }
+
 }

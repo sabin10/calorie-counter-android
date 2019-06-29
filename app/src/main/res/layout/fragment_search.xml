@@ -6,7 +6,6 @@
         tools:context=".search.SearchFragment" android:id="@+id/layout2">
 
     <data>
-        <import type="android.view.View" />
         <variable name="viewModel"
                   type="com.sabinhantu.caloriecounter.search.SearchViewModel"/>
     </data>
@@ -16,15 +15,6 @@
             android:layout_height="match_parent">
 
         <!-- TODO: Update blank fragment layout -->
-        <Button
-                android:text="TO ADD FOOD FRAGMENT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_search_to_add_food" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -56,10 +46,9 @@
                 android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@+id/search_edittext" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/btn_search_to_add_food"
                 android:id="@+id/search_recyclerview"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
