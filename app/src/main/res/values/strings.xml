@@ -16,4 +16,7 @@
     <string name="listitem">List Item</string>
     <string name="kcal">100 kcal</string>
     <string name="foodname">Food Name</string>
+
+    <string name="per100g_format">%d kcal per 100g</string>
+    <string name="display_kcal_per_100g">%,.0f per 100g</string>
 </resources>

@@ -19,3 +19,7 @@ fun convertFoodKcalDoubletoString(foodKcal: Double): String {
     return doubleAsString.substring(0, indexOfDecimal + 2)  + kcalString
 
 }
+
+fun textViewPer100g(kcalDouble: Double): String {
+    return convertFoodKcalDoubletoString(kcalDouble) + " per 100 g"
+}

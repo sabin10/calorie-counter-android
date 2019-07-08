@@ -25,6 +25,7 @@ class AddFoodFragment : Fragment() {
         binding.viewModel = ViewModelProviders.of(this,
             viewModelFactory).get(AddFoodViewModel::class.java)
 
+
         return binding.root
     }
 
