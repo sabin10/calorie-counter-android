@@ -3,10 +3,10 @@ package com.sabinhantu.caloriecounter.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sabinhantu.caloriecounter.convertFoodKcalDoubletoString
-import com.sabinhantu.caloriecounter.convertFoodNameToShortString
 import com.sabinhantu.caloriecounter.databinding.ListItemSearchBinding
+import com.sabinhantu.caloriecounter.foodNameToShortString
 import com.sabinhantu.caloriecounter.network.model.Food
+import com.sabinhantu.caloriecounter.toKcalString
 
 class SearchItemAdapter(val onClickListener: OnClickListener) : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
@@ -47,8 +47,10 @@ class SearchItemAdapter(val onClickListener: OnClickListener) : RecyclerView.Ada
         fun bind(item: Food) {
 //            val res = binding.context.resources
 
-            binding.searchItemName.text = convertFoodNameToShortString(item.label)
-            binding.searchItemKcal.text = convertFoodKcalDoubletoString(item.nutrients.kcal)
+//            binding.searchItemName.text = convertFoodNameToShortString(item.label)
+            binding.searchItemName.text = item.label.foodNameToShortString()
+//            binding.searchItemKcal.text = convertFoodKcalDoubletoString(item.nutrients.kcal)
+            binding.searchItemKcal.text = item.nutrients.kcal.toKcalString()
         }
 
     }

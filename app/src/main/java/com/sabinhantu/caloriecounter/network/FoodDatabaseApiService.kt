@@ -25,9 +25,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface FoodDatabaseApiService {
-//    @GET("parser?ingr=banana&app_id=fe644ac9&app_key=652ca904c80725291f88f7e3a033615c")
-//    fun getBanana():
-//            Call<String>
 
     @GET("parser?")
     fun getSpecificFood(@Query("ingr") food: String,

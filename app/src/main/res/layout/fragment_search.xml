@@ -14,16 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/search_edittext" android:layout_marginTop="32dp"
+                android:id="@+id/search_edittext"
+                android:layout_marginTop="32dp"
                 android:drawableLeft="@drawable/ic_search_black_24dp"
                 android:background="@drawable/search_input_style"
                 android:padding="12dp"
+                android:drawablePadding="8dp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"

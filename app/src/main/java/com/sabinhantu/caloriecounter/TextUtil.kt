@@ -1,25 +1,19 @@
 package com.sabinhantu.caloriecounter
 
-fun convertFoodNameToShortString(foodName: String): String {
-    if (foodName.length <= 20)
-        return foodName
-
-    return foodName.substring(0, 20) + "..."
+fun String.foodNameToShortString():String {
+    if (this.length <= 20)
+        return this
+    return this.substring(0, 20) + "..."
 }
 
-fun convertFoodKcalDoubletoString(foodKcal: Double): String {
+fun Double.toKcalString(): String {
     val kcalString = " kcal"
 
-    val doubleAsString = foodKcal.toString()
+    val doubleAsString = this.toString()
     val indexOfDecimal = doubleAsString.indexOf(".")
 
     if (doubleAsString.substring(indexOfDecimal + 1) == "0")
         return doubleAsString.substring(0, indexOfDecimal) + kcalString
 
     return doubleAsString.substring(0, indexOfDecimal + 2)  + kcalString
-
-}
-
-fun textViewPer100g(kcalDouble: Double): String {
-    return convertFoodKcalDoubletoString(kcalDouble) + " per 100 g"
 }
