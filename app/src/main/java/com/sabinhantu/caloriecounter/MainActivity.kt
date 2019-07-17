@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.nav_main_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
 
+
     }
 
     override fun onStart() {

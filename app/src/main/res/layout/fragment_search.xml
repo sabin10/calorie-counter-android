@@ -14,12 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        <!--two way binding-->
         <EditText
+                android:id="@+id/search_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/search_edittext"
                 android:layout_marginTop="32dp"
                 android:drawableLeft="@drawable/ic_search_black_24dp"
                 android:background="@drawable/search_input_style"
@@ -28,28 +29,31 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:hint="@string/Search"
-                android:text="@={viewModel.word}" android:layout_marginEnd="8dp"
+                android:hint="@string/search"
+                android:text="@={viewModel.word}"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_search"/>
         <Button
-                android:text="@string/Search"
+                android:id="@+id/btn_search"
+                android:text="@string/search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
                 style="@style/style_button_black"
                 android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"
                 app:layout_constraintTop_toTopOf="@+id/search_edittext"
                 app:layout_constraintBottom_toBottomOf="@+id/search_edittext"/>
+
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_recyclerview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@+id/search_edittext" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/search_recyclerview"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

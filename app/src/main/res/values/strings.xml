@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Calorie Counter</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Auth string -->
     <string name="donthaveaccount">Don\'t have an account yet? Register with email</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -12,11 +11,15 @@
 
     <string name="facebook_app_id">392729354670177</string>
     <string name="fb_login_protocol_scheme">fb392729354670177</string>
-    <string name="Search">Search</string>
     <string name="listitem">List Item</string>
     <string name="kcal">100 kcal</string>
     <string name="foodname">Food Name</string>
 
-    <string name="per100g_format">%d kcal per 100g</string>
     <string name="display_kcal_per_100g">%,.0f per 100g</string>
+
+    <!--Labels for fragments-->
+    <string name="search">Search</string>
+    <string name="add_food">Add Food</string>
+
+
 </resources>
