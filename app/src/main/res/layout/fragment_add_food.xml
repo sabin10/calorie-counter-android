@@ -19,17 +19,16 @@
                 android:text="@{viewModel.selectedFood.shortName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="24dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="20sp"
                 android:layout_marginEnd="16dp"
                 android:gravity="start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                tools:text="@string/foodname"/>
+                tools:text="@string/foodname"
+                style="@style/addfood_name"/>
         <TextView
                 android:id="@+id/addfood_kcal_per100"
                 android:text="@{viewModel.displayKcalPer100G}"
@@ -38,17 +37,52 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/addfood_name"
                 app:layout_constraintStart_toStartOf="@+id/addfood_name"
-                android:textSize="16sp"
-                tools:text="200 kcal per 100g"/>
-        <EditText
-                android:layout_width="wrap_content"
+                tools:text="200 kcal per 100g"
+                style="@style/addfood_desc"/>
+
+        <LinearLayout
+                android:id="@+id/lly_enter_grams"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned"
-                android:ems="10"
-                android:id="@+id/editText"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/addfood_kcal_per100" android:hint="grame"/>
+                app:layout_constraintTop_toBottomOf="@id/addfood_kcal_per100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Enter serving size"
+                    android:gravity="center_vertical"
+                    style="@style/addfood_label_enter"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLength="3"
+                    android:gravity="center_vertical"
+                    app:boxStrokeColor="@color/grey"
+                    app:boxCornerRadiusTopStart="@dimen/box_corner_rounded"
+                    app:boxCornerRadiusTopEnd="@dimen/box_corner_rounded"
+                    app:boxCornerRadiusBottomStart="@dimen/box_corner_rounded"
+                    app:boxCornerRadiusBottomEnd="@dimen/box_corner_rounded"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addfood_current_grams"
+                        android:background="@drawable/search_input_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textCursorDrawable="@null"
+                        android:drawableEnd="@drawable/ic_outline_casino_24px"
+                        android:text="@={viewModel.currentGramsString}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

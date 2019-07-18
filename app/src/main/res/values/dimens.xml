@@ -3,4 +3,12 @@
     <dimen name="padding_16">16dp</dimen>
     <dimen name="text_size_14">14sp</dimen>
     <dimen name="text_size_16">16sp</dimen>
+
+
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_head">16sp</dimen>
+    <dimen name="text_subhead">14sp</dimen>
+    <dimen name="text_desc">12sp</dimen>
+
+    <dimen name="box_corner_rounded">16dp</dimen>
 </resources>

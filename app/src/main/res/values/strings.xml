@@ -15,7 +15,11 @@
     <string name="kcal">100 kcal</string>
     <string name="foodname">Food Name</string>
 
+    <!--Add Food Fragment Formats-->
     <string name="display_kcal_per_100g">%,.0f per 100g</string>
+    <string name="display_current_carbs">%,.0f CARBS</string>
+    <string name="display_current_proteins">%,.0f PROTEINS</string>
+    <string name="display_current_fats">%,.0f FATS</string>
 
     <!--Labels for fragments-->
     <string name="search">Search</string>

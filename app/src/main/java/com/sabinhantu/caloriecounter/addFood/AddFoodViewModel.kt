@@ -17,15 +17,27 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
 
     private val _currentGram = MutableLiveData<Double>()
 
+    val currentGramsString = MutableLiveData<String>()
+
+    val currentGramsInt = MutableLiveData<Int>()
+
+
 
 
     init {
         _selectedFood.value = food
-        _currentGram.value = 100.0
+
+        currentGramsString.value = ""
+
+        currentGramsInt.value = 100
     }
 
     val displayKcalPer100G = Transformations.map(selectedFood) {
         app.applicationContext.getString(R.string.display_kcal_per_100g, it.nutrients.kcal)
+    }
+
+    val displayCurrentGramsCarbs = Transformations.map(selectedFood) {
+        app.applicationContext.getString(R.string.display_current_carbs, currentGramsInt.value?.times(it.nutrients.carbs))
     }
 
 }
