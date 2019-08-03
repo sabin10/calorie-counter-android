@@ -27,7 +27,7 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
     init {
         _selectedFood.value = food
 
-        currentGramsString.value = ""
+        currentGramsString.value = "2"
 
         currentGramsInt.value = 100
     }
@@ -36,8 +36,15 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
         app.applicationContext.getString(R.string.display_kcal_per_100g, it.nutrients.kcal)
     }
 
-    val displayCurrentGramsCarbs = Transformations.map(selectedFood) {
-        app.applicationContext.getString(R.string.display_current_carbs, currentGramsInt.value?.times(it.nutrients.carbs))
+    val displayCurrentGramsCarbs = Transformations.map(currentGramsString) {stringsab ->
+//        app.applicationContext.getString(R.string.display_current_carbs, currentGramsInt.value?.times(it.nutrients.carbs))
+
+        if (stringsab.isEmpty()) {
+            app.applicationContext.getString(R.string.display_current_carbs, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.display_current_carbs, stringsab.toDouble())
+        }
+
     }
 
 }

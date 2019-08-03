@@ -31,7 +31,7 @@
                 style="@style/addfood_name"/>
         <TextView
                 android:id="@+id/addfood_kcal_per100"
-                android:text="@{viewModel.displayKcalPer100G}"
+                android:text="@{viewModel.displayCurrentGramsCarbs}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -72,13 +72,15 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="numberSigned"
                         android:id="@+id/addfood_current_grams"
                         android:background="@drawable/search_input_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@null"
                         android:drawableEnd="@drawable/ic_outline_casino_24px"
-                        android:text="@={viewModel.currentGramsString}"/>
+                        android:text="@={viewModel.currentGramsString}"
+                        android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
