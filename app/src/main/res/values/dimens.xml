@@ -11,4 +11,9 @@
     <dimen name="text_desc">12sp</dimen>
 
     <dimen name="box_corner_rounded">16dp</dimen>
+
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_half">8dp</dimen>
+    <dimen name="default_margin_double">32dp</dimen>
+    <dimen name="default_margin_third">24dp</dimen>
 </resources>
