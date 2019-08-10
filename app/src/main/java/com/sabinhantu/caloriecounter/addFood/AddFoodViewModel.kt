@@ -78,9 +78,4 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
     val displayFatsPercent = Transformations.map(selectedFood) { food ->
         app.applicationContext.getString(R.string.format_percent, food.nutrients.fatPercent)
     }
-
-
-
-
-
 }

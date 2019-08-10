@@ -18,7 +18,5 @@ data class Nutrients (
     val carbsPercent = (100 * carbs.roundToInt()) / totalNutrients
     val proteinPercent = (100 * protein.roundToInt()) / totalNutrients
     val fatPercent = (100 * fat.roundToInt()) / totalNutrients
-
-
 }
 
