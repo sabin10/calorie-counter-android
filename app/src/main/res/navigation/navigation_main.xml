@@ -19,7 +19,7 @@
 
     <fragment android:id="@+id/searchFragment"
               android:name="com.sabinhantu.caloriecounter.search.SearchFragment"
-              android:label="@string/search"
+              android:label="@string/search_food"
               tools:layout="@layout/fragment_search">
 
         <action android:id="@+id/action_searchFragment_to_addFoodFragment"
@@ -32,12 +32,12 @@
 
     <fragment android:id="@+id/addFoodFragment"
               android:name="com.sabinhantu.caloriecounter.addFood.AddFoodFragment"
-              android:label="@string/add_food"
+              android:label="@string/food_macros"
               tools:layout="@layout/fragment_add_food">
 
         <argument
-            android:name="selectedFood"
-            app:argType="com.sabinhantu.caloriecounter.network.model.Food"/>
+                android:name="selectedFood"
+                app:argType="com.sabinhantu.caloriecounter.network.model.Food"/>
     </fragment>
 
 </navigation>

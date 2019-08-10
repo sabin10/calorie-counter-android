@@ -33,7 +33,9 @@
 
     <!--Labels for fragments-->
     <string name="search">Search</string>
+    <string name="search_food">Search Food</string>
     <string name="add_food">Add Food</string>
+    <string name="food_macros">Food Macros</string>
 
 
 </resources>
