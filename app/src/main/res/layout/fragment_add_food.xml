@@ -261,9 +261,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@null"
-                        android:drawableEnd="@drawable/ic_outline_casino_24px"
+                        android:drawableEnd="@drawable/ic_weight_scale"
                         android:text="@={viewModel.currentGramsString}"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:maxLength="4"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

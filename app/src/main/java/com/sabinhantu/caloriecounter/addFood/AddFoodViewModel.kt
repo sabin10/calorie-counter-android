@@ -68,21 +68,15 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
     }
 
     val displayCarbsPercent = Transformations.map(selectedFood) { food ->
-        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
-        val carbsPercent = Math.round((100 * food.nutrients.carbs) / totalNutrients)
-        app.applicationContext.getString(R.string.format_percent, carbsPercent)
+        app.applicationContext.getString(R.string.format_percent, food.nutrients.carbsPercent)
     }
 
     val displayProteinsPercent = Transformations.map(selectedFood) { food ->
-        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
-        val proteinsPercent = Math.round((100 * food.nutrients.protein) / totalNutrients)
-        app.applicationContext.getString(R.string.format_percent, proteinsPercent)
+        app.applicationContext.getString(R.string.format_percent, food.nutrients.proteinPercent)
     }
 
     val displayFatsPercent = Transformations.map(selectedFood) { food ->
-        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
-        val fatsPercent = Math.round((100 * food.nutrients.fat) / totalNutrients)
-        app.applicationContext.getString(R.string.format_percent, fatsPercent)
+        app.applicationContext.getString(R.string.format_percent, food.nutrients.fatPercent)
     }
 
 
