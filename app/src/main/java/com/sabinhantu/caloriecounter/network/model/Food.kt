@@ -18,4 +18,5 @@ data class Food (
 
     val layoutName
         get() = label.foodNameForLayout()
+
 }

@@ -17,14 +17,9 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
 
     val currentGramsString = MutableLiveData<String>()
 
-
-
-
     init {
         _selectedFood.value = food
-
         currentGramsString.value = "100"
-
     }
 
     val displayKcalPer100G = Transformations.map(selectedFood) { food ->
@@ -70,8 +65,24 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
         } else {
             app.applicationContext.getString(R.string.format_total_kcal, gramsString.toDouble().times(kcalPerOneGram))
         }
+    }
 
+    val displayCarbsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val carbsPercent = Math.round((100 * food.nutrients.carbs) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, carbsPercent)
+    }
 
+    val displayProteinsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val proteinsPercent = Math.round((100 * food.nutrients.protein) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, proteinsPercent)
+    }
+
+    val displayFatsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val fatsPercent = Math.round((100 * food.nutrients.fat) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, fatsPercent)
     }
 
 

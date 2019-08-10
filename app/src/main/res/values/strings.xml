@@ -18,11 +18,12 @@
     <!--Add Food-->
     <string name="display_kcal_per_100g">%,.0f kcal per 100g</string>
     <string name="display_current_carbs">%,.0fg of Carbs</string>
-    <string name="display_current_proteins">%,.0fg  of Proteins</string>
+    <string name="display_current_proteins">%,.0fg of Proteins</string>
     <string name="display_current_fats">%,.0fg of Fats</string>
 
     <string name="format_grams">%,.0f g</string>
     <string name="format_total_kcal">%,.0f kcal</string>
+    <string name="format_percent">%d %%</string>
 
     <string name="label_carbs">Carbs</string>
     <string name="label_proteins">Proteins</string>
