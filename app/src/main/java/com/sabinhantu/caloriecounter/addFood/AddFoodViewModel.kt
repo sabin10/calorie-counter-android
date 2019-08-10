@@ -30,7 +30,7 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
     val displayKcalPer100G = Transformations.map(selectedFood) { food ->
         app.applicationContext.getString(R.string.display_kcal_per_100g, food.nutrients.kcal)
     }
-    
+
 
     val displayCurrentCarbs = Transformations.map(currentGramsString) { gramsString ->
         val carbsPerOneGram = selectedFood.value!!.nutrients.carbs / 100
@@ -61,6 +61,20 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
             app.applicationContext.getString(R.string.format_grams, gramsString.toDouble().times(fatsPerOneGram))
         }
     }
+
+    val displayCurrentTotalKcal = Transformations.map(currentGramsString) { gramsString ->
+        val kcalPerOneGram = selectedFood.value!!.nutrients.kcal / 100
+
+        if (gramsString.isEmpty()) {
+            app.applicationContext.getString(R.string.format_total_kcal, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.format_total_kcal, gramsString.toDouble().times(kcalPerOneGram))
+        }
+
+
+    }
+
+
 
 
 

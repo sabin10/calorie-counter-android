@@ -44,7 +44,7 @@
 
         <TextView
                 android:id="@+id/tv_food_name"
-                android:text="@{viewModel.selectedFood.shortName}"
+                android:text="@{viewModel.selectedFood.layoutName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -210,7 +210,7 @@
                         android:id="@+id/tv_current_kcal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="150 kcal"
+                        android:text="@{viewModel.displayCurrentTotalKcal}"
                         android:layout_marginBottom="@dimen/default_margin_half"
                         app:layout_constraintTop_toBottomOf="@id/label_total"
                         app:layout_constraintStart_toStartOf="parent"

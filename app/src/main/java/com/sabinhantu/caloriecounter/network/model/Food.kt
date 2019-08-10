@@ -1,6 +1,7 @@
 package com.sabinhantu.caloriecounter.network.model
 
 import android.os.Parcelable
+import com.sabinhantu.caloriecounter.foodNameForLayout
 import com.sabinhantu.caloriecounter.foodNameToShortString
 import kotlinx.android.parcel.Parcelize
 
@@ -14,4 +15,7 @@ data class Food (
 ) : Parcelable {
     val shortName
         get() = label.foodNameToShortString()
+
+    val layoutName
+        get() = label.foodNameForLayout()
 }
