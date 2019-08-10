@@ -1,7 +1,6 @@
 package com.sabinhantu.caloriecounter.search
 
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,18 +34,15 @@ class SearchViewModel : ViewModel() {
 
     fun getSearchFoodResponse() {
         viewModelScope.launch {
-            var responseDeffered = FoodDatabaseApi.retrofitService.getSpecificFood(word.value!!)
+            val responseDeffered = FoodDatabaseApi.retrofitService.getSpecificFood(word.value!!)
             try {
-                var responseJson = responseDeffered.await()
-                var hintsList = responseJson.hints
-                var auxFoodList: MutableList<Food> = mutableListOf()
+                val responseJson = responseDeffered.await()
+                val hintsList = responseJson.hints
+                val auxFoodList: MutableList<Food> = mutableListOf()
                 for (hint in hintsList) {
                     auxFoodList.add(hint.food)
                 }
                 _searchListFood.value = auxFoodList
-
-                Log.i("raluk", _searchListFood.value?.size.toString())
-
 
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"

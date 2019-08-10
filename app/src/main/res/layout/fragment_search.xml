@@ -33,17 +33,18 @@
                 android:text="@={viewModel.word}"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_search"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_search"
                 android:text="@string/search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
-                style="@style/style_button_black"
+                android:backgroundTint="@color/colorPrimaryDark"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"
                 app:layout_constraintTop_toTopOf="@+id/search_edittext"
-                app:layout_constraintBottom_toBottomOf="@+id/search_edittext"/>
+                app:layout_constraintBottom_toBottomOf="@+id/search_edittext"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_recyclerview"
