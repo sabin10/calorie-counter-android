@@ -6,6 +6,12 @@ fun String.foodNameToShortString():String {
     return this.substring(0, 20) + "..."
 }
 
+fun String.foodNameForLayout(): String {
+    if (this.length <= 35)
+        return this
+    return this.substring(0, 35) + "..."
+}
+
 fun Double.toKcalString(): String {
     val kcalString = " kcal"
 

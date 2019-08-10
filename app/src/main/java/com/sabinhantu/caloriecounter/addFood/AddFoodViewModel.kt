@@ -15,29 +15,78 @@ class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
     val selectedFood: LiveData<Food>
         get() = _selectedFood
 
-    private val _currentGram = MutableLiveData<Double>()
-
     val currentGramsString = MutableLiveData<String>()
-
-    val currentGramsInt = MutableLiveData<Int>()
-
-
-
 
     init {
         _selectedFood.value = food
-
-        currentGramsString.value = ""
-
-        currentGramsInt.value = 100
+        currentGramsString.value = "100"
     }
 
-    val displayKcalPer100G = Transformations.map(selectedFood) {
-        app.applicationContext.getString(R.string.display_kcal_per_100g, it.nutrients.kcal)
+    val displayKcalPer100G = Transformations.map(selectedFood) { food ->
+        app.applicationContext.getString(R.string.display_kcal_per_100g, food.nutrients.kcal)
     }
 
-    val displayCurrentGramsCarbs = Transformations.map(selectedFood) {
-        app.applicationContext.getString(R.string.display_current_carbs, currentGramsInt.value?.times(it.nutrients.carbs))
+
+    val displayCurrentCarbs = Transformations.map(currentGramsString) { gramsString ->
+        val carbsPerOneGram = selectedFood.value!!.nutrients.carbs / 100
+
+        if (gramsString.isEmpty()) {
+            app.applicationContext.getString(R.string.format_grams, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.format_grams, gramsString.toDouble().times(carbsPerOneGram))
+        }
     }
+
+    val displayCurrentProteins = Transformations.map(currentGramsString) { gramsString ->
+        val proteinsPerOneGram = selectedFood.value!!.nutrients.protein / 100
+
+        if (gramsString.isEmpty()) {
+            app.applicationContext.getString(R.string.format_grams, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.format_grams, gramsString.toDouble().times(proteinsPerOneGram))
+        }
+    }
+
+    val displayCurrentFats = Transformations.map(currentGramsString) { gramsString ->
+        val fatsPerOneGram = selectedFood.value!!.nutrients.fat / 100
+
+        if (gramsString.isEmpty()) {
+            app.applicationContext.getString(R.string.format_grams, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.format_grams, gramsString.toDouble().times(fatsPerOneGram))
+        }
+    }
+
+    val displayCurrentTotalKcal = Transformations.map(currentGramsString) { gramsString ->
+        val kcalPerOneGram = selectedFood.value!!.nutrients.kcal / 100
+
+        if (gramsString.isEmpty()) {
+            app.applicationContext.getString(R.string.format_total_kcal, "0".toDouble())
+        } else {
+            app.applicationContext.getString(R.string.format_total_kcal, gramsString.toDouble().times(kcalPerOneGram))
+        }
+    }
+
+    val displayCarbsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val carbsPercent = Math.round((100 * food.nutrients.carbs) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, carbsPercent)
+    }
+
+    val displayProteinsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val proteinsPercent = Math.round((100 * food.nutrients.protein) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, proteinsPercent)
+    }
+
+    val displayFatsPercent = Transformations.map(selectedFood) { food ->
+        val totalNutrients = food.nutrients.protein + food.nutrients.fat + food.nutrients.carbs
+        val fatsPercent = Math.round((100 * food.nutrients.fat) / totalNutrients)
+        app.applicationContext.getString(R.string.format_percent, fatsPercent)
+    }
+
+
+
+
 
 }
