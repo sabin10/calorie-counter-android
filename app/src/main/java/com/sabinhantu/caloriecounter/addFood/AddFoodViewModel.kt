@@ -107,6 +107,8 @@ class AddFoodViewModel(
             val carbsPerOneGram = selectedFood.value!!.nutrients.carbs / 100
             val proteinsPerOneGram = selectedFood.value!!.nutrients.protein / 100
             val fatsPerOneGram = selectedFood.value!!.nutrients.fat / 100
+            val kcalPerOneGram = selectedFood.value!!.nutrients.kcal / 100
+
             val currentGrams = currentGramsString.value?.toDouble()
 
             val foodModel = FoodModel(
@@ -114,7 +116,8 @@ class AddFoodViewModel(
                 grams = currentGrams,
                 carbs = currentGrams?.times(carbsPerOneGram),
                 proteins = currentGrams?.times(proteinsPerOneGram),
-                fats = currentGrams?.times(fatsPerOneGram)
+                fats = currentGrams?.times(fatsPerOneGram),
+                kcal = currentGrams!!.times(kcalPerOneGram)
             )
 
             insert(foodModel)

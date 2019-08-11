@@ -17,5 +17,7 @@ data class FoodModel (
 
     var proteins: Double?,
 
-    var fats: Double?
+    var fats: Double?,
+
+    var kcal: Double
 )
