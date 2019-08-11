@@ -6,9 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.sabinhantu.caloriecounter.R
+import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
 import com.sabinhantu.caloriecounter.network.model.Food
 
-class AddFoodViewModel(food: Food, app: Application) : AndroidViewModel(app) {
+class AddFoodViewModel(
+        food: Food,
+        val database: FoodDatabaseDao,
+        app: Application) : AndroidViewModel(app) {
 
     private val _selectedFood = MutableLiveData<Food>()
 
