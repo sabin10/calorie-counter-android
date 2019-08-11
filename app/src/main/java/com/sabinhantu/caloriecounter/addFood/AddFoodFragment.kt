@@ -17,7 +17,7 @@ class AddFoodFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentAddFoodBinding>(inflater, R.layout.fragment_add_food, container, false)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         val food = AddFoodFragmentArgs.fromBundle(arguments!!).selectedFood
 
