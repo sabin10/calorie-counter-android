@@ -37,5 +37,8 @@
     <string name="add_food">Add Food</string>
     <string name="food_macros">Food Macros</string>
 
+    <!--Search-->
+    <string name="food_not_found">Food not found.</string>
+
 
 </resources>

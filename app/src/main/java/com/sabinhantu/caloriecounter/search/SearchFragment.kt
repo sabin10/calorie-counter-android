@@ -63,6 +63,17 @@ class SearchFragment : Fragment() {
             }
         })
 
+        // Food Not Found TV visibility
+        viewModel.showFoodNotFound.observe(this, Observer {
+            if (it == false) {
+                binding.searchRecyclerview.visibility = View.VISIBLE
+                binding.tvNotFound.visibility = View.INVISIBLE
+            } else {
+                binding.searchRecyclerview.visibility = View.INVISIBLE
+                binding.tvNotFound.visibility = View.VISIBLE
+            }
+        })
+
 
         return binding.root
     }

@@ -30,8 +30,11 @@ class SearchViewModel : ViewModel() {
 
     val searchInProgress = MutableLiveData<Boolean>()
 
+    val showFoodNotFound = MutableLiveData<Boolean>()
+
     init {
         searchInProgress.value = false
+        showFoodNotFound.value = false
     }
 
 
@@ -46,6 +49,7 @@ class SearchViewModel : ViewModel() {
                 val responseJson = responseDeffered.await()
                 val hintsList = responseJson.hints
                 searchInProgress.value = false
+                showFoodNotFound.value = false
                 val auxFoodList: MutableList<Food> = mutableListOf()
                 for (hint in hintsList) {
                     auxFoodList.add(hint.food)
@@ -53,6 +57,8 @@ class SearchViewModel : ViewModel() {
                 _searchListFood.value = auxFoodList
 
             } catch (e: Exception) {
+                searchInProgress.value = false
+                showFoodNotFound.value = true
                 _response.value = "Failure: ${e.message}"
             }
         }

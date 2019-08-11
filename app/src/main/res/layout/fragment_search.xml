@@ -57,6 +57,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
         </androidx.recyclerview.widget.RecyclerView>
+
         <ProgressBar
                 android:visibility="visible"
                 android:id="@+id/search_progressbar"
@@ -69,6 +70,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/tv_not_found"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_double"
+                android:text="@string/food_not_found"
+                android:textSize="@dimen/text_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/search_edittext"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
