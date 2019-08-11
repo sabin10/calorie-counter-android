@@ -17,10 +17,6 @@ class SearchViewModel : ViewModel() {
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
 
-    // The external immutable LiveData for the response String
-    val response: LiveData<String>
-        get() = _response
-
     private val _searchListFood = MutableLiveData<List<Food>>()
 
     val searchListFood: LiveData<List<Food>>
@@ -32,12 +28,24 @@ class SearchViewModel : ViewModel() {
     val navigateToSelectedFood: LiveData<Food>
         get() = _navigateToSelectedFood
 
+    val searchInProgress = MutableLiveData<Boolean>()
+
+    init {
+        searchInProgress.value = false
+    }
+
+
     fun getSearchFoodResponse() {
+        if (word.value == "" || word.value == null)
+            return
+
+        searchInProgress.value = true
         viewModelScope.launch {
-            val responseDeffered = FoodDatabaseApi.retrofitService.getSpecificFood(word.value!!)
+            val responseDeffered = FoodDatabaseApi.retrofitService.getSpecificFood(word.value ?: "")
             try {
                 val responseJson = responseDeffered.await()
                 val hintsList = responseJson.hints
+                searchInProgress.value = false
                 val auxFoodList: MutableList<Food> = mutableListOf()
                 for (hint in hintsList) {
                     auxFoodList.add(hint.food)

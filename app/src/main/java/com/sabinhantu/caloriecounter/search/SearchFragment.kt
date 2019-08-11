@@ -16,20 +16,18 @@ import com.sabinhantu.caloriecounter.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
+    private lateinit var binding: FragmentSearchBinding
+
     private val viewModel: SearchViewModel by lazy {
         ViewModelProviders.of(this).get(SearchViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentSearchBinding>(inflater, R.layout.fragment_search, container, false)
-
-//        binding.btnSearchToAddFood.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(R.id.action_searchFragment_to_addFoodFragment)
-//        )
+        binding = DataBindingUtil.inflate<FragmentSearchBinding>(inflater, R.layout.fragment_search, container, false)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         // Giving the binding access to the viewModel
         binding.viewModel = viewModel
@@ -56,9 +54,19 @@ class SearchFragment : Fragment() {
             }
         })
 
+        // ProgressBar's Visibility
+        viewModel.searchInProgress.observe(this, Observer {
+            if (it == false) {
+                binding.searchProgressbar.visibility = View.INVISIBLE
+            } else {
+                binding.searchProgressbar.visibility = View.VISIBLE
+            }
+        })
+
 
         return binding.root
     }
+
 
 
 }
