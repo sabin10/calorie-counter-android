@@ -12,6 +12,7 @@ buildscript {
         version_recyclerview = "1.0.0"
         version_material = "1.1.0-alpha08"
         version_firebase = "18.1.0"
+        version_room = "2.0.0"
     }
     repositories {
         google()

@@ -276,6 +276,7 @@
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/add_food"
                 android:layout_marginTop="@dimen/default_margin"
+                android:onClick="@{() -> viewModel.onAddFoodSave()}"
                 app:layout_constraintTop_toBottomOf="@id/lly_enter_grams"
                 app:layout_constraintStart_toStartOf="@id/guid_add_food_start"
                 app:layout_constraintEnd_toStartOf="@id/guid_add_food_end"
