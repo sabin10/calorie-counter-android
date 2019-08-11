@@ -3,11 +3,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".dayOverview.DayOverviewFragment" android:id="@+id/layout">
+        tools:context=".overview.OverviewFragment" android:id="@+id/layout">
 
     <data>
         <variable name="viewModel"
-                  type="com.sabinhantu.caloriecounter.dayOverview.DayOverviewViewModel"/>
+                  type="com.sabinhantu.caloriecounter.overview.OverviewViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
