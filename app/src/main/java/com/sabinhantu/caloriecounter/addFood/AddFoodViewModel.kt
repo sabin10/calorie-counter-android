@@ -7,12 +7,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
+import com.sabinhantu.caloriecounter.database.FoodModel
 import com.sabinhantu.caloriecounter.network.model.Food
+import kotlinx.coroutines.*
 
 class AddFoodViewModel(
         food: Food,
         val database: FoodDatabaseDao,
         app: Application) : AndroidViewModel(app) {
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
     private val _selectedFood = MutableLiveData<Food>()
 
@@ -25,6 +30,10 @@ class AddFoodViewModel(
         _selectedFood.value = food
         currentGramsString.value = "100"
     }
+
+    /**
+     * UI's LiveData
+     */
 
     val displayKcalPer100G = Transformations.map(selectedFood) { food ->
         app.applicationContext.getString(R.string.display_kcal_per_100g, food.nutrients.kcal)
@@ -81,5 +90,42 @@ class AddFoodViewModel(
 
     val displayFatsPercent = Transformations.map(selectedFood) { food ->
         app.applicationContext.getString(R.string.format_percent, food.nutrients.fatPercent)
+    }
+
+    /**
+     * Database
+     */
+
+    private suspend fun insert(foodModel: FoodModel) {
+        withContext(Dispatchers.IO) {
+            database.insert(foodModel)
+        }
+    }
+
+    fun onAddFoodSave() {
+        uiScope.launch {
+            val carbsPerOneGram = selectedFood.value!!.nutrients.carbs / 100
+            val proteinsPerOneGram = selectedFood.value!!.nutrients.protein / 100
+            val fatsPerOneGram = selectedFood.value!!.nutrients.fat / 100
+            val currentGrams = currentGramsString.value?.toDouble()
+
+            val foodModel = FoodModel(
+                name = selectedFood.value?.layoutName,
+                grams = currentGrams,
+                carbs = currentGrams?.times(carbsPerOneGram),
+                proteins = currentGrams?.times(proteinsPerOneGram),
+                fats = currentGrams?.times(fatsPerOneGram)
+            )
+
+            insert(foodModel)
+        }
+    }
+
+
+
+    override fun onCleared() {
+        super.onCleared()
+        // cancel all coroutines
+        viewModelJob.cancel()
     }
 }

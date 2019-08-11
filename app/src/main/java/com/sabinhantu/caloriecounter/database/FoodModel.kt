@@ -11,11 +11,11 @@ data class FoodModel (
 
     var name: String?,
 
-    var grams: Int = 100,
+    var grams: Double?,
 
-    var carbs: Int?,
+    var carbs: Double?,
 
-    var proteins: Int?,
+    var proteins: Double?,
 
-    var fats: Int?
+    var fats: Double?
 )
