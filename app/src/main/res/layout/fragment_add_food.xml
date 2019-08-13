@@ -66,13 +66,52 @@
                 style="@style/addfood_desc"/>
 
         <LinearLayout
+                android:id="@+id/lly_chart"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="@dimen/default_margin"
+                android:weightSum="100"
+                app:layout_constraintTop_toBottomOf="@id/tv_kcal_per_100"
+                app:layout_constraintStart_toStartOf="@id/guid_add_food_start"
+                app:layout_constraintEnd_toStartOf="@id/guid_add_food_end">
+
+            <LinearLayout
+                    android:id="@+id/chart_value_carbs"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:orientation="horizontal"
+                    android:background="@color/blueMacro"/>
+            <LinearLayout
+                    android:id="@+id/chart_value_proteins"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:orientation="horizontal"
+                    android:background="@color/greenMacro"/>
+            <LinearLayout
+                    android:id="@+id/chart_value_fats"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:orientation="horizontal"
+                    android:background="@color/orangeMacro"/>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
                 android:id="@+id/lly_nutrients"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="5"
-                android:layout_marginTop="@dimen/default_margin_half"
-                app:layout_constraintTop_toBottomOf="@id/tv_kcal_per_100"
+                android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toBottomOf="@id/lly_chart"
                 app:layout_constraintStart_toStartOf="@id/guid_add_food_start"
                 app:layout_constraintEnd_toStartOf="@id/guid_add_food_end">
 
@@ -110,6 +149,7 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_current_carbs"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="5%"
                         style="@style/addfood_tv_nutrient_precent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -147,6 +187,7 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_current_proteins"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="5%"
                         style="@style/addfood_tv_nutrient_precent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -185,6 +226,7 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_current_fats"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="5%"
                         style="@style/addfood_tv_nutrient_precent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
