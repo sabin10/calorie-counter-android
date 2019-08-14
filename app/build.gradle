@@ -96,4 +96,7 @@ dependencies {
     // Material Components
     implementation "com.google.android.material:material:$version_material"
 
+    // Rounded Layouts
+    implementation 'com.jcminarro:RoundKornerLayouts:0.4.0'
+
 }
