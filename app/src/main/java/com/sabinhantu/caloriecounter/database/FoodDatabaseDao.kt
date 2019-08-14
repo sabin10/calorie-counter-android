@@ -13,4 +13,7 @@ interface FoodDatabaseDao {
 
     @Query("SELECT * FROM food_table ORDER BY id DESC")
     fun getAllFood(): LiveData<List<FoodModel>>
+
+    @Query("DELETE FROM food_table")
+    fun deleteAll()
 }

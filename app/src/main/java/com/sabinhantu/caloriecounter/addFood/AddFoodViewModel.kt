@@ -16,9 +16,12 @@ class AddFoodViewModel(
         val database: FoodDatabaseDao,
         app: Application) : AndroidViewModel(app) {
 
+    /** COROUTINES */
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
+
+    /** BINDABLES */
     private val _selectedFood = MutableLiveData<Food>()
 
     val selectedFood: LiveData<Food>
@@ -26,17 +29,13 @@ class AddFoodViewModel(
 
     val currentGramsString = MutableLiveData<String>()
 
-    /**
-     *  Chart values
-     */
+
     init {
         _selectedFood.value = food
         currentGramsString.value = "100"
     }
 
-    /**
-     * UI's LiveData
-     */
+    /** UI's LiveData */
 
     val displayKcalPer100G = Transformations.map(selectedFood) { food ->
         app.applicationContext.getString(R.string.display_kcal_per_100g, food.nutrients.kcal)
@@ -95,9 +94,7 @@ class AddFoodViewModel(
         app.applicationContext.getString(R.string.format_percent, food.nutrients.fatPercent)
     }
 
-    /**
-     * Database
-     */
+    /** Database */
 
     private suspend fun insert(foodModel: FoodModel) {
         withContext(Dispatchers.IO) {
@@ -126,8 +123,6 @@ class AddFoodViewModel(
             insert(foodModel)
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

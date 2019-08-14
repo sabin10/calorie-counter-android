@@ -1,17 +1,21 @@
 package com.sabinhantu.caloriecounter.overview
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
+import kotlinx.coroutines.*
 
 class OverviewViewModel(
     val database: FoodDatabaseDao,
-    app: Application
-) : ViewModel() {
+    app: Application) : AndroidViewModel(app) {
 
-    val foods = database.getAllFood()
+    /** COROUTINES */
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
+
+    private val foods = database.getAllFood()
 
     val displayTotalKcal = Transformations.map(foods) {foods ->
 
@@ -22,13 +26,30 @@ class OverviewViewModel(
             for (food in foods) {
                 totalKcal += food.kcal
             }
-
             app.applicationContext.getString(R.string.format_total_kcal, totalKcal)
         }
+    }
 
 
+    /** Database */
+
+    private suspend fun deleteAll() {
+        withContext(Dispatchers.IO) {
+            database.deleteAll()
+        }
+    }
+
+    fun onDeleteAll() {
+        uiScope.launch {
+            deleteAll()
+        }
+    }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        // cancel all coroutines
+        viewModelJob.cancel()
     }
 
 
