@@ -29,7 +29,6 @@ class AddFoodViewModel(
     /**
      *  Chart values
      */
-
     init {
         _selectedFood.value = food
         currentGramsString.value = "100"
