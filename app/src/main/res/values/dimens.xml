@@ -5,6 +5,7 @@
     <dimen name="text_size_16">16sp</dimen>
 
 
+    <dimen name="text_supertitle">40sp</dimen>
     <dimen name="text_title">18sp</dimen>
     <dimen name="text_head">16sp</dimen>
     <dimen name="text_subhead">14sp</dimen>

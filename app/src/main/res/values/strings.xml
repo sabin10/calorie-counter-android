@@ -23,12 +23,15 @@
 
     <string name="format_grams">%,.0f g</string>
     <string name="format_total_kcal">%,.0f kcal</string>
+    <string name="format_double">%,.0f</string>
     <string name="format_percent">%d %%</string>
 
+    <!--LABELS-->
     <string name="label_carbs">Carbs</string>
     <string name="label_proteins">Proteins</string>
     <string name="label_fats">Fats</string>
     <string name="label_total">Total</string>
+    <string name="label_kcal">kcal</string>
 
 
     <!--Labels for fragments-->

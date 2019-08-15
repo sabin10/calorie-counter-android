@@ -21,13 +21,13 @@ class OverviewViewModel(
     val displayTotalKcal = Transformations.map(foods) {foods ->
 
         if (foods.isEmpty()) {
-            app.applicationContext.getString(R.string.format_total_kcal, "0".toDouble())
+            app.applicationContext.getString(R.string.format_double, "0".toDouble())
         } else {
             var totalKcal = 0.0
             for (food in foods) {
                 totalKcal += food.kcal
             }
-            app.applicationContext.getString(R.string.format_total_kcal, totalKcal)
+            app.applicationContext.getString(R.string.format_double, totalKcal)
         }
     }
 

@@ -10,75 +10,101 @@
                   type="com.sabinhantu.caloriecounter.overview.OverviewViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guid_overview_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="@dimen/default_margin"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guid_overview_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="@dimen/default_margin"/>
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guid_overview_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/default_margin"/>
 
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guid_overview_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="@dimen/default_margin_third"/>
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guid_overview_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/default_margin"/>
 
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guid_overview_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_end="@dimen/default_margin_third"/>
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guid_overview_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="@dimen/default_margin"/>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="@dimen/text_title"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="@{viewModel.displayTotalKcal}"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/btn_delete_all"/>
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guid_overview_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="@dimen/default_margin_third"/>
 
-        <Button
-                android:id="@+id/btn_delete_all"
-                android:text="DELETE ALL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/button_rounded_black"
-                app:layout_constraintBottom_toTopOf="@id/btn_overview_to_search"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                android:onClick="@{() -> viewModel.onDeleteAll()}"/>
-        <Button
-                android:id="@+id/btn_overview_to_search"
-                android:text="go to Search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/guid_overview_top"
+                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
+                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
+                    app:layout_constraintBottom_toTopOf="@id/btn_delete_all"
+                    android:layout_marginBottom="100dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                    android:id="@+id/tv_total_kcal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_supertitle"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@{viewModel.displayTotalKcal}"
+                    android:layout_marginBottom="8dp"
+                    tools:text="1890"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                        android:id="@+id/label_total_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_kcal"
+                        android:textSize="@dimen/text_title"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:fontFamily="@font/roboto_medium"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintStart_toEndOf="@id/tv_total_kcal"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_total_kcal"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                    android:id="@+id/btn_delete_all"
+                    android:text="DELETE ALL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/button_rounded_black"
+                    app:layout_constraintBottom_toTopOf="@id/btn_overview_to_search"
+                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
+                    app:layout_constraintEnd_toEndOf="@id/guid_overview_end"
+                    android:onClick="@{() -> viewModel.onDeleteAll()}"/>
+            <Button
+                    android:id="@+id/btn_overview_to_search"
+                    android:text="go to Search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/guid_overview_bottom"
+                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
+                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>
