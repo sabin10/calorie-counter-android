@@ -2,6 +2,7 @@ package com.sabinhantu.caloriecounter.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -19,4 +20,8 @@ interface FoodDatabaseDao {
 
     @Query("DELETE FROM food_table")
     fun deleteAll()
+
+    @Delete
+    fun deleteFood(foodModel: FoodModel)
+
 }

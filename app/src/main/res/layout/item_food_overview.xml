@@ -86,6 +86,7 @@
             style="@style/tv_overview_foodlabel"/>
 
     <ImageButton
+            android:id="@+id/btn_delete_item_overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_round_close_24px"

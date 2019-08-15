@@ -9,7 +9,7 @@ import com.sabinhantu.caloriecounter.database.FoodModel
 import com.sabinhantu.caloriecounter.databinding.ItemFoodOverviewBinding
 import com.sabinhantu.caloriecounter.foodNameToShortString
 
-class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  {
+class OverviewRVAdapter(val onBtnDeleteListener: OnBtnDeleteListener) : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  {
 
     var data = listOf<FoodModel>()
         set(value) {
@@ -19,7 +19,7 @@ class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OverviewRVAdapter.ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(parent, onBtnDeleteListener)
     }
 
     override fun getItemCount() = data.size
@@ -27,17 +27,20 @@ class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  
     override fun onBindViewHolder(holder: OverviewRVAdapter.ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        holder.click(item)
+
+
     }
 
 
-    class ViewHolder private constructor(val binding: ItemFoodOverviewBinding)
+    class ViewHolder constructor(val binding: ItemFoodOverviewBinding, val onBtnDeleteListener: OnBtnDeleteListener)
         : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
-            fun from(parent: ViewGroup): ViewHolder {
+            fun from(parent: ViewGroup, onBtnDeleteListener: OnBtnDeleteListener): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemFoodOverviewBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(binding, onBtnDeleteListener)
             }
         }
 
@@ -50,6 +53,18 @@ class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  
             binding.tvItemOverviewFats.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.fats)
         }
 
+        fun click(item: FoodModel) {
+            binding.btnDeleteItemOverview.setOnClickListener {
+                onBtnDeleteListener.onClick(item)
+            }
+        }
+
+
+    }
+
+
+    class OnBtnDeleteListener(val clickListener: (foodModel: FoodModel) -> Unit) {
+        fun onClick(foodModel: FoodModel) = clickListener(foodModel)
     }
 
 }

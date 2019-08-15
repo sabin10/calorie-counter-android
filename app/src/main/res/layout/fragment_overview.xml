@@ -88,6 +88,7 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/default_margin"
                     android:weightSum="@{viewModel.foodTotal.sumPercent + 2}"
+                    android:background="@color/greyMacro"
                     app:layout_constraintTop_toBottomOf="@id/cly_title"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
@@ -104,7 +105,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:orientation="horizontal"/>
+                        android:orientation="horizontal"
+                        android:background="@color/white"/>
 
                 <LinearLayout
                         android:id="@+id/chart_value_proteins"
@@ -118,7 +120,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:orientation="horizontal"/>
+                        android:orientation="horizontal"
+                        android:background="@color/white"/>
                 <LinearLayout
                         android:id="@+id/chart_value_fats"
                         android:layout_width="0dp"

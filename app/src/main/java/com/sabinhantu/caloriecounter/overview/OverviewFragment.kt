@@ -32,7 +32,10 @@ class OverviewFragment : Fragment() {
             .get(OverviewViewModel::class.java)
         binding.viewModel = viewModel
 
-        val adapter = OverviewRVAdapter()
+        val adapter = OverviewRVAdapter(OverviewRVAdapter.OnBtnDeleteListener {
+            viewModel.onDeleteChoosedFood(it)
+        })
+
         binding.rvOverview.adapter = adapter
 
         viewModel.foods.observe(viewLifecycleOwner, Observer {

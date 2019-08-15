@@ -88,6 +88,20 @@ class OverviewViewModel(
         }
     }
 
+    private suspend fun deleteFood(foodModel: FoodModel) {
+        withContext(Dispatchers.IO) {
+            database.deleteFood(foodModel)
+        }
+    }
+
+    fun onDeleteChoosedFood(foodModel: FoodModel) {
+        uiScope.launch {
+            deleteFood(foodModel)
+        }
+    }
+
+
+
     override fun onCleared() {
         super.onCleared()
         // cancel all coroutines
