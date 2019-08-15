@@ -2,6 +2,7 @@ package com.sabinhantu.caloriecounter
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 fun String.foodNameToShortString():String {
     if (this.length <= 20)
@@ -31,4 +32,11 @@ fun getCurrentDayString(): String {
     val date = Date();
     val formatter = SimpleDateFormat("MMM-dd-yyyy")
     return formatter.format(date)
+}
+
+fun doublesToIntOrOne(a: Double, b: Double, c: Double): Int {
+    if ((a + b + c).roundToInt() > 0) {
+        return (a + b + c).roundToInt()
+    }
+    return 1
 }

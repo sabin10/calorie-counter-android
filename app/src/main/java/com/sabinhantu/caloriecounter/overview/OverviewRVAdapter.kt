@@ -7,6 +7,7 @@ import com.sabinhantu.caloriecounter.CalorieCounterApplication
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodModel
 import com.sabinhantu.caloriecounter.databinding.ItemFoodOverviewBinding
+import com.sabinhantu.caloriecounter.foodNameToShortString
 
 class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  {
 
@@ -41,7 +42,7 @@ class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  
         }
 
         fun bind(item: FoodModel) {
-            binding.tvItemOverviewName.text = item.name
+            binding.tvItemOverviewName.text = item.name?.foodNameToShortString()
             binding.tvItemOverviewGrams.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.grams)
             binding.tvItemOverviewKcal.text = CalorieCounterApplication.instance.getString(R.string.format_total_kcal, item.kcal)
             binding.tvItemOverviewCarbs.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.carbs)
