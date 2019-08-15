@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
+import com.sabinhantu.caloriecounter.getCurrentDayString
 import kotlinx.coroutines.*
 
 class OverviewViewModel(
@@ -15,7 +16,7 @@ class OverviewViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    private val foods = database.getAllFood()
+    private val foods = database.getAllFoodFromDay(getCurrentDayString())
 
     val displayTotalKcal = Transformations.map(foods) {foods ->
 

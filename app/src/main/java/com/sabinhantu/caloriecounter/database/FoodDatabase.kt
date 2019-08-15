@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [FoodModel::class], version = 1, exportSchema = false)
+@Database(entities = [FoodModel::class], version = 2, exportSchema = false)
 abstract class FoodDatabase : RoomDatabase() {
 
     abstract val foodDatabaseDao: FoodDatabaseDao

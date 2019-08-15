@@ -19,5 +19,8 @@ data class FoodModel (
 
     var fats: Double?,
 
-    var kcal: Double
+    var kcal: Double,
+
+    /** aug.-15-2019 */
+    var date: String?
 )

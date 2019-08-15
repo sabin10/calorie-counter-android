@@ -1,5 +1,8 @@
 package com.sabinhantu.caloriecounter
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 fun String.foodNameToShortString():String {
     if (this.length <= 20)
         return this
@@ -22,4 +25,10 @@ fun Double.toKcalString(): String {
         return doubleAsString.substring(0, indexOfDecimal) + kcalString
 
     return doubleAsString.substring(0, indexOfDecimal + 2)  + kcalString
+}
+
+fun getCurrentDayString(): String {
+    val date = Date();
+    val formatter = SimpleDateFormat("MMM-dd-yyyy")
+    return formatter.format(date)
 }

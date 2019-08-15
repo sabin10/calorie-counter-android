@@ -8,6 +8,7 @@ import androidx.lifecycle.Transformations
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
 import com.sabinhantu.caloriecounter.database.FoodModel
+import com.sabinhantu.caloriecounter.getCurrentDayString
 import com.sabinhantu.caloriecounter.network.model.Food
 import kotlinx.coroutines.*
 
@@ -117,7 +118,8 @@ class AddFoodViewModel(
                 carbs = currentGrams?.times(carbsPerOneGram),
                 proteins = currentGrams?.times(proteinsPerOneGram),
                 fats = currentGrams?.times(fatsPerOneGram),
-                kcal = currentGrams!!.times(kcalPerOneGram)
+                kcal = currentGrams!!.times(kcalPerOneGram),
+                date = getCurrentDayString()
             )
 
             insert(foodModel)
