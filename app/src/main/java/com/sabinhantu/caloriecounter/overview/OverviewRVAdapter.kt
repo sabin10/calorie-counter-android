@@ -3,6 +3,8 @@ package com.sabinhantu.caloriecounter.overview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.sabinhantu.caloriecounter.CalorieCounterApplication
+import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodModel
 import com.sabinhantu.caloriecounter.databinding.ItemFoodOverviewBinding
 
@@ -40,11 +42,11 @@ class OverviewRVAdapter : RecyclerView.Adapter<OverviewRVAdapter.ViewHolder>()  
 
         fun bind(item: FoodModel) {
             binding.tvItemOverviewName.text = item.name
-            binding.tvItemOverviewGrams.text = item.grams.toString()
-            binding.tvItemOverviewKcal.text = item.kcal.toString()
-            binding.tvItemOverviewCarbs.text = item.carbs.toString() + " g"
-            binding.tvItemOverviewProteins.text = item.proteins.toString()
-            binding.tvItemOverviewFats.text = item.fats.toString()
+            binding.tvItemOverviewGrams.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.grams)
+            binding.tvItemOverviewKcal.text = CalorieCounterApplication.instance.getString(R.string.format_total_kcal, item.kcal)
+            binding.tvItemOverviewCarbs.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.carbs)
+            binding.tvItemOverviewProteins.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.proteins)
+            binding.tvItemOverviewFats.text = CalorieCounterApplication.instance.getString(R.string.format_grams, item.fats)
         }
 
     }
