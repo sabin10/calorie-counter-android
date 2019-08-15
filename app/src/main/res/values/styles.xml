@@ -77,5 +77,13 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
+    <style name="tv_overview_foodname">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_head</item>
+    </style>
+    <style name="tv_overview_foodlabel">
+        <item name="android:textSize">@dimen/text_subhead</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
 
 </resources>
