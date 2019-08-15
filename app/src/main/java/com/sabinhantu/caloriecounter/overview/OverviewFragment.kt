@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.sabinhantu.caloriecounter.R
@@ -27,8 +28,23 @@ class OverviewFragment : Fragment() {
         val dataSource = FoodDatabase.getInstance(application).foodDatabaseDao
 
         val viewModelFactory = OverviewViewModelFactory(dataSource, application)
-        binding.viewModel = ViewModelProviders.of(this, viewModelFactory)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(OverviewViewModel::class.java)
+        binding.viewModel = viewModel
+
+        val adapter = OverviewRVAdapter()
+        binding.rvOverview.adapter = adapter
+
+        viewModel.foods.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
+
+
+
+
 
         return binding.root
     }

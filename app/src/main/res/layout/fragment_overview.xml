@@ -45,13 +45,12 @@
                     app:layout_constraintGuide_end="@dimen/default_margin_third"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cly_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@id/guid_overview_top"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
-                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
-                    app:layout_constraintBottom_toTopOf="@id/btn_delete_all"
-                    android:layout_marginBottom="100dp">
+                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end">
 
             <TextView
                     android:id="@+id/tv_total_kcal"
@@ -82,6 +81,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_overview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/cly_title"
+                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
+                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"/>
+
             <Button
                     android:id="@+id/btn_delete_all"
                     android:text="DELETE ALL"
@@ -89,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/button_rounded_black"
+                    app:layout_constraintTop_toBottomOf="@id/rv_overview"
                     app:layout_constraintBottom_toTopOf="@id/btn_overview_to_search"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toEndOf="@id/guid_overview_end"

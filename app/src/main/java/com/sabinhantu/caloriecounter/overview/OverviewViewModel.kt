@@ -16,7 +16,7 @@ class OverviewViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    private val foods = database.getAllFoodFromDay(getCurrentDayString())
+    val foods = database.getAllFoodFromDay(getCurrentDayString())
 
     val displayTotalKcal = Transformations.map(foods) {foods ->
 
