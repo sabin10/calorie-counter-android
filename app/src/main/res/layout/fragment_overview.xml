@@ -81,15 +81,67 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+                    android:id="@+id/lly_chart"
+                    android:layout_width="0dp"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:weightSum="@{viewModel.foodTotal.sumPercent + 2}"
+                    app:layout_constraintTop_toBottomOf="@id/cly_title"
+                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
+                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
+                    app:corner_radius="16dp">
+
+                <LinearLayout
+                        android:id="@+id/chart_value_carbs"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="@{viewModel.foodTotal.carbsPercent}"
+                        android:orientation="horizontal"
+                        android:background="@color/blueMacro"/>
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"/>
+
+                <LinearLayout
+                        android:id="@+id/chart_value_proteins"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="@{viewModel.foodTotal.proteinPercent}"
+                        android:orientation="horizontal"
+                        android:background="@color/greenMacro"/>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"/>
+                <LinearLayout
+                        android:id="@+id/chart_value_fats"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="@{viewModel.foodTotal.fatPercent}"
+                        android:orientation="horizontal"
+                        android:background="@color/orangeMacro"/>
+
+
+
+
+            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
             <LinearLayout
                     android:id="@+id/lly_nutrients_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="3"
+                    android:layout_marginTop="@dimen/default_margin"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
-                    app:layout_constraintTop_toBottomOf="@id/cly_title">
+                    app:layout_constraintTop_toBottomOf="@id/lly_chart">
 
                 <!--CARBS-->
                 <androidx.constraintlayout.widget.ConstraintLayout

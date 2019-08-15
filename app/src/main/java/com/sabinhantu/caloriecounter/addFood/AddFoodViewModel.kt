@@ -30,8 +30,12 @@ class AddFoodViewModel(
 
     val currentGramsString = MutableLiveData<String>()
 
+    // Navigation Back to Overview
+    val navigateToOverview = MutableLiveData<Boolean>()
+
 
     init {
+        navigateToOverview.value = false
         _selectedFood.value = food
         currentGramsString.value = "100"
     }
@@ -124,11 +128,22 @@ class AddFoodViewModel(
 
             insert(foodModel)
         }
+
+        onNavigateToOverviewStart()
     }
 
     override fun onCleared() {
         super.onCleared()
         // cancel all coroutines
         viewModelJob.cancel()
+    }
+
+    /** Navigations*/
+    fun onNavigateToOverviewStart() {
+        navigateToOverview.value = true
+    }
+
+    fun onNavigateToOverviewCompleted() {
+        navigateToOverview.value = false
     }
 }

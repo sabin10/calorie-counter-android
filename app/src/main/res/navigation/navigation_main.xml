@@ -25,6 +25,11 @@
         <argument
                 android:name="selectedFood"
                 app:argType="com.sabinhantu.caloriecounter.network.model.Food"/>
+        <action android:id="@+id/action_addFoodFragment_to_overviewFragment"
+                app:destination="@id/overviewFragment"
+                app:popUpTo="@+id/overviewFragment" app:popUpToInclusive="true" app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_right" app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment android:id="@+id/overviewFragment"
               android:name="com.sabinhantu.caloriecounter.overview.OverviewFragment"

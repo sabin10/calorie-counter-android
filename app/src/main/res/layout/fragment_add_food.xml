@@ -111,9 +111,6 @@
                     android:orientation="horizontal"
                     android:background="@color/orangeMacro"/>
 
-
-
-
         </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
 
         <LinearLayout
