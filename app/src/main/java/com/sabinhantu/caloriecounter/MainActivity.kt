@@ -2,18 +2,32 @@ package com.sabinhantu.caloriecounter
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.FirebaseAuth
 import com.sabinhantu.caloriecounter.auth.AuthActivity
 import com.sabinhantu.caloriecounter.databinding.ActivityMainBinding
+import com.sabinhantu.caloriecounter.overview.OverviewFragment
+import kotlinx.android.synthetic.main.app_bar.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
+
+    override fun onOverviewCurrent(isCurrent: Boolean) {
+        isOverviewCurrent = isCurrent
+        //update menu
+        invalidateOptionsMenu()
+    }
 
     private var mAuth: FirebaseAuth? = null
+    private lateinit var navController: NavController
+    private var isOverviewCurrent = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        val navController = this.findNavController(R.id.nav_main_fragment)
+        setSupportActionBar(app_toolbar)
+//        supportActionBar?.title = "sabin"
+
+        navController = this.findNavController(R.id.nav_main_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
 
 
@@ -46,4 +63,25 @@ class MainActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
+
+    /** MENU */
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (isOverviewCurrent) {
+            menuInflater.inflate(R.menu.menu_main, menu)
+            return true
+        }
+        return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item?.itemId
+
+        if (id == R.id.action_calendar) {
+            Toast.makeText(this, "sabi boss", Toast.LENGTH_LONG).show()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.sabinhantu.caloriecounter.overview
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import com.sabinhantu.caloriecounter.database.FoodDatabase
 import com.sabinhantu.caloriecounter.databinding.FragmentOverviewBinding
 
 class OverviewFragment : Fragment() {
+
+    private lateinit var listenerCurrent: OnOverviewCurrent
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -44,12 +47,32 @@ class OverviewFragment : Fragment() {
             }
         })
 
-
-
-
-
-
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        listenerCurrent.onOverviewCurrent(true)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        listenerCurrent.onOverviewCurrent(false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is OnOverviewCurrent) {
+            listenerCurrent = context
+        } else {
+            throw ClassCastException(
+                context.toString() + " must implement OnDogSelected.")
+        }
+    }
+
+    interface OnOverviewCurrent {
+        fun onOverviewCurrent(isCurrent: Boolean)
     }
 
 }

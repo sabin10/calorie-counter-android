@@ -274,24 +274,14 @@
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toStartOf="@id/guid_overview_end"/>
 
-            <Button
-                    android:id="@+id/btn_delete_all"
-                    android:text="DELETE ALL"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/button_rounded_black"
-                    app:layout_constraintTop_toBottomOf="@id/rv_overview"
-                    app:layout_constraintBottom_toTopOf="@id/btn_overview_to_search"
-                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
-                    app:layout_constraintEnd_toEndOf="@id/guid_overview_end"
-                    android:onClick="@{() -> viewModel.onDeleteAll()}"/>
+
             <Button
                     android:id="@+id/btn_overview_to_search"
                     android:text="go to Search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/rv_overview"
                     app:layout_constraintBottom_toTopOf="@id/guid_overview_bottom"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
