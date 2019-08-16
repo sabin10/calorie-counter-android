@@ -91,6 +91,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_round_close_24px"
             android:background="@null"
+            android:layout_marginEnd="4dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

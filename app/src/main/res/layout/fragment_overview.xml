@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_end="@dimen/default_margin_third"/>
+                    app:layout_constraintGuide_end="@dimen/default_margin"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cly_title"
@@ -264,12 +264,11 @@
 
             </LinearLayout>
 
-            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            <LinearLayout
                     android:id="@+id/lly_all_foods"
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@color/colorPrimaryDark"
                     android:layout_marginTop="16dp"
                     app:layout_constraintTop_toBottomOf="@id/lly_nutrients_total"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
@@ -277,37 +276,59 @@
                     app:top_left_corner_radius="16dp"
                     app:top_right_corner_radius="16dp">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="sabinutu"
-                        android:textColor="@color/white"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Food List"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="@dimen/text_title"
+                            android:textColor="@color/colorPrimaryDark"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageButton
+                            android:id="@+id/btn_overview_to_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_round_add_circle"
+                            android:background="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_overview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/lly_all_foods"
                     app:layout_constraintStart_toStartOf="@id/guid_overview_start"
-                    app:layout_constraintEnd_toStartOf="@id/guid_overview_end"/>
-
-
-            <Button
-                    android:id="@+id/btn_overview_to_search"
-                    android:text="go to Search"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintTop_toBottomOf="@id/rv_overview"
-                    app:layout_constraintBottom_toTopOf="@id/guid_overview_bottom"
-                    app:layout_constraintStart_toStartOf="@id/guid_overview_start"
                     app:layout_constraintEnd_toStartOf="@id/guid_overview_end"
-            />
+                    app:layout_constraintBottom_toTopOf="@id/guid_overview_bottom"/>
+
+
+            <!--<Button-->
+                    <!--android:id="@+id/btn_overview_to_search"-->
+                    <!--android:text="go to Search"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/rv_overview"-->
+                    <!--app:layout_constraintBottom_toTopOf="@id/guid_overview_bottom"-->
+                    <!--app:layout_constraintStart_toStartOf="@id/guid_overview_start"-->
+                    <!--app:layout_constraintEnd_toStartOf="@id/guid_overview_end"-->
+            <!--/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
