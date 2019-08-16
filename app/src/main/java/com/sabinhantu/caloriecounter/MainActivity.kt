@@ -23,6 +23,12 @@ class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
         isOverviewCurrent = isCurrent
         //update menu
         invalidateOptionsMenu()
+        if (isCurrent) {
+            // set current day string
+            supportActionBar?.subtitle = "cf sefule"
+        } else {
+            supportActionBar?.subtitle = ""
+        }
     }
 
     private var mAuth: FirebaseAuth? = null
@@ -36,10 +42,12 @@ class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
         mAuth = FirebaseAuth.getInstance()
 
         setSupportActionBar(app_toolbar)
-//        supportActionBar?.title = "sabin"
 
         navController = this.findNavController(R.id.nav_main_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+
+
+
 
 
     }
@@ -74,13 +82,10 @@ class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item?.itemId
-
-        if (id == R.id.action_calendar) {
+        if (item?.itemId == R.id.action_calendar) {
             Toast.makeText(this, "sabi boss", Toast.LENGTH_LONG).show()
             return true
         }
-
         return super.onOptionsItemSelected(item)
     }
 
