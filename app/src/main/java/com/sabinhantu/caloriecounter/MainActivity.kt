@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
         invalidateOptionsMenu()
         if (isCurrent) {
             // set current day string
-            supportActionBar?.subtitle = "cf sefule"
+            supportActionBar?.subtitle = selectedDate ?: getCurrentDayString()
         } else {
             supportActionBar?.subtitle = ""
         }

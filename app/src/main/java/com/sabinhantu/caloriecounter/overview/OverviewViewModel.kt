@@ -12,15 +12,17 @@ import kotlinx.coroutines.*
 
 class OverviewViewModel(
     val database: FoodDatabaseDao,
-    var dateSelected: String,
     app: Application) : AndroidViewModel(app) {
 
     /** COROUTINES */
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
+
+    var dateSelected = getCurrentDayString()
     /** LIVEDATA */
-    val foods = database.getAllFoodFromDay(getCurrentDayString())
+    val foods = database.getAllFoodFromDay(dateSelected)
+
 
 
     val foodTotal = Transformations.map(foods) {foods ->
