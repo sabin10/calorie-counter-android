@@ -39,6 +39,7 @@
     <string name="search_food">Search Food</string>
     <string name="add_food">Add Food</string>
     <string name="food_macros">Food Macros</string>
+    <string name="select_date">Select Date</string>
 
     <!--Search-->
     <string name="food_not_found">Food not found.</string>

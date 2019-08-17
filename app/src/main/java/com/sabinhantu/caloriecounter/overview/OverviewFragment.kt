@@ -2,6 +2,7 @@ package com.sabinhantu.caloriecounter.overview
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import com.sabinhantu.caloriecounter.MainActivity
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabase
 import com.sabinhantu.caloriecounter.databinding.FragmentOverviewBinding
+import com.sabinhantu.caloriecounter.getCurrentDayString
 
 class OverviewFragment : Fragment() {
 
     private lateinit var listenerCurrent: OnOverviewCurrent
+    private lateinit var viewModel: OverviewViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -30,9 +34,12 @@ class OverviewFragment : Fragment() {
         val application = requireNotNull(activity).application
         val dataSource = FoodDatabase.getInstance(application).foodDatabaseDao
 
-        val viewModelFactory = OverviewViewModelFactory(dataSource, application)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+        val viewModelFactory = OverviewViewModelFactory(dataSource, getCurrentDayString(),application)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(OverviewViewModel::class.java)
+
+
         binding.viewModel = viewModel
 
         val adapter = OverviewRVAdapter(OverviewRVAdapter.OnBtnDeleteListener {
@@ -47,11 +54,18 @@ class OverviewFragment : Fragment() {
             }
         })
 
+
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
+        val activity = activity as MainActivity
+        val selectedDate = activity.selectedDate
+//        if (selectedDate != null) {
+//            viewModel.foods = viewModel.database.getAllFoodFromDay()
+//        }
+
         listenerCurrent.onOverviewCurrent(true)
     }
 

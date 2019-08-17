@@ -2,6 +2,7 @@ package com.sabinhantu.caloriecounter.overview
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.database.FoodDatabaseDao
@@ -11,6 +12,7 @@ import kotlinx.coroutines.*
 
 class OverviewViewModel(
     val database: FoodDatabaseDao,
+    var dateSelected: String,
     app: Application) : AndroidViewModel(app) {
 
     /** COROUTINES */
@@ -19,6 +21,7 @@ class OverviewViewModel(
 
     /** LIVEDATA */
     val foods = database.getAllFoodFromDay(getCurrentDayString())
+
 
     val foodTotal = Transformations.map(foods) {foods ->
         var gramsTotal = 0.0
