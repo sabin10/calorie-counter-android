@@ -14,44 +14,53 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!--two way binding-->
-        <EditText
-                android:id="@+id/search_edittext"
-                android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cly_search_bar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:layout_marginTop="32dp"
-                android:drawableLeft="@drawable/ic_search_black_24dp"
-                android:background="@drawable/search_input_style"
-                android:padding="12dp"
-                android:drawablePadding="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                android:hint="@string/search"
-                android:text="@={viewModel.word}"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_search"/>
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_search"
-                android:text="@string/search"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/colorPrimaryDark"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"
-                app:layout_constraintTop_toTopOf="@+id/search_edittext"
-                app:layout_constraintBottom_toBottomOf="@+id/search_edittext"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <!--two way binding-->
+            <EditText
+                    android:id="@+id/search_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:drawableLeft="@drawable/ic_search_black_24dp"
+                    android:background="@drawable/search_input_style"
+                    android:padding="12dp"
+                    android:drawablePadding="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="@string/search"
+                    android:text="@={viewModel.word}"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_search"/>
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_search"
+                    android:text="@string/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:onClick="@{ () -> viewModel.getSearchFoodResponse()}"
+                    app:cornerRadius="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_recyclerview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/search_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/cly_search_bar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +75,7 @@
                 android:minHeight="50dp"
                 android:minWidth="50dp"
                 style="?android:attr/progressBarStyle"
-                app:layout_constraintTop_toBottomOf="@+id/search_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/cly_search_bar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -80,7 +89,7 @@
                 android:textSize="@dimen/text_title"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/search_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/cly_search_bar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
