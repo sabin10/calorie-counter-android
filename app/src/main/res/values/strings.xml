@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calorie Counter</string>
+    <string name="app_name">justMacroz</string>
 
     <!-- Auth string -->
     <string name="donthaveaccount">Don\'t have an account yet? Register with email</string>
