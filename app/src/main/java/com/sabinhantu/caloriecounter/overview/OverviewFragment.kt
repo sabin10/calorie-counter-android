@@ -2,7 +2,6 @@ package com.sabinhantu.caloriecounter.overview
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +20,11 @@ class OverviewFragment : Fragment() {
 
     private lateinit var listenerCurrent: OnOverviewCurrent
     private lateinit var viewModel: OverviewViewModel
+    private lateinit var binding: FragmentOverviewBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentOverviewBinding>(inflater, R.layout.fragment_overview, container, false)
+        binding = DataBindingUtil.inflate<FragmentOverviewBinding>(inflater, R.layout.fragment_overview, container, false)
         binding.lifecycleOwner = this
 
         binding.btnOverviewToSearch.setOnClickListener(
@@ -63,9 +63,14 @@ class OverviewFragment : Fragment() {
         val activity = activity as MainActivity
         val selectedDate = activity.selectedDate
         if (selectedDate != null) {
-//            Log.i("taran", "ceva $selectedDate")
-
             viewModel.setDateSelected(selectedDate)
+            if (selectedDate != getCurrentDayString()) {
+                // Hide search btn
+                binding.btnOverviewToSearch.visibility = View.INVISIBLE
+            } else {
+                binding.btnOverviewToSearch.visibility = View.VISIBLE
+            }
+
         }
 
         listenerCurrent.onOverviewCurrent(true)
@@ -83,7 +88,7 @@ class OverviewFragment : Fragment() {
             listenerCurrent = context
         } else {
             throw ClassCastException(
-                context.toString() + " must implement OnDogSelected.")
+                context.toString() + " must implement OnOverviewCurrent.")
         }
     }
 
