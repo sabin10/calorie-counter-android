@@ -47,15 +47,21 @@
                 android:hint="@string/confirm_password"
                 style="@style/style_auth_field" android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/register_password_view"/>
-        <Button
-                android:text="@string/register"
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/register_button_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/register_button_view" android:layout_marginTop="24dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="@string/register"
+                android:fontFamily="@font/roboto_medium"
+                android:padding="10dp"
+                app:cornerRadius="16dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/register_passwordconf_view"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
-                style="@style/style_button_black"/>
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
