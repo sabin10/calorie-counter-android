@@ -63,14 +63,9 @@ class OverviewFragment : Fragment() {
         val activity = activity as MainActivity
         val selectedDate = activity.selectedDate
         if (selectedDate != null) {
-            Log.i("taran", "ceva $selectedDate")
-//            viewModel.dateSelected = selectedDate
-//            val application = requireNotNull(activity).application
-//            val dataSource = FoodDatabase.getInstance(application).foodDatabaseDao
-//            val viewModelFactory = OverviewViewModelFactory(dataSource,application)
-//            viewModel = ViewModelProviders.of(this, viewModelFactory)
-//                .get(OverviewViewModel::class.java)
-            // TODO
+//            Log.i("taran", "ceva $selectedDate")
+
+            viewModel.setDateSelected(selectedDate)
         }
 
         listenerCurrent.onOverviewCurrent(true)

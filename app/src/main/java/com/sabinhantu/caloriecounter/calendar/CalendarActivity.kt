@@ -7,11 +7,12 @@ import android.util.Log
 import com.sabinhantu.caloriecounter.MainActivity
 import com.sabinhantu.caloriecounter.R
 import com.sabinhantu.caloriecounter.constructDate
+import com.sabinhantu.caloriecounter.getCurrentDayString
 import kotlinx.android.synthetic.main.activity_calendar.*
 
 class CalendarActivity : AppCompatActivity() {
 
-    private var selectedDate: String = ""
+    private var selectedDate: String = getCurrentDayString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,7 @@ class CalendarActivity : AppCompatActivity() {
         calendarview.setOnDateChangeListener { _, year, month, dayOfMonth ->
             selectedDate = constructDate(year, month + 1, dayOfMonth)
         }
+
 
         btn_select_date.setOnClickListener {
             intentToMain(selectedDate)

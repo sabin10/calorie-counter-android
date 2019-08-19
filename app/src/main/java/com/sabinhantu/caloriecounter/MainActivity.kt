@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), OverviewFragment.OnOverviewCurrent {
 
         val incomingIntent = intent
         _selectedDate = incomingIntent.getStringExtra("date")
-//        Log.i("raluk", " $selectedDate")
 
     }
 

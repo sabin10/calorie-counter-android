@@ -19,10 +19,16 @@ class OverviewViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
 
-    var dateSelected = getCurrentDayString()
+    var dateSelected = MutableLiveData(getCurrentDayString())
+    fun setDateSelected(newDate: String) {
+        dateSelected.value = newDate
+    }
     /** LIVEDATA */
-    val foods = database.getAllFoodFromDay(dateSelected)
+//    val foods = database.getAllFoodFromDay(dateSelected.value ?: "")
 
+    val foods = Transformations.switchMap(dateSelected) { date ->
+        database.getAllFoodFromDay(date)
+    }
 
 
     val foodTotal = Transformations.map(foods) {foods ->
