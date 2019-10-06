@@ -9,7 +9,7 @@ User can search for a food and then add to the daily food with a choosed serving
 ## Stack of technologies
 ###### Used MVVM Arhitectural Pattern
 + used Kotlin
-+ Android Jetpack(Navigation Graph, Data Binding, View Model)
++ Android Jetpack(Navigation Graph, Data Binding)
 + Retrofit
 + Room
 + Firebase Auth
